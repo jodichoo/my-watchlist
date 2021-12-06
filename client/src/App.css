@@ -1,0 +1,267 @@
+* {
+  margin: 0; 
+  padding: 0;
+}
+
+.navbar {
+  position: sticky;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  background-color: black;
+  height: 8vh;
+  color: whitesmoke;
+  display: flex; 
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  margin: 0 0.8rem;
+}
+
+.show-list {
+  max-width: 1024px;
+  margin: 0 auto;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.show-container {
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 6.5rem;
+  min-width: 0;
+  margin: 0.5rem 0;
+}
+
+.show-container:hover {
+  cursor: pointer; 
+  animation: preview-hovered 1 ease-in-out 0.2s forwards;
+}
+
+@keyframes preview-hovered {
+  from {
+    transform: translateY(0);
+  } to {
+    transform: translateY(-12px);
+  }
+}
+
+.show-preview-left {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.show-preview-right {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: small;
+  font-weight: 700;
+}
+
+.show-preview-left {
+  min-width: 0;
+}
+
+.show-preview-poster-container {
+  height: 100%;
+}
+
+.show-preview-poster {
+  max-height: 100%;
+}
+
+.show-preview-text {
+  height: 100%;
+  overflow: hidden;
+}
+
+.show-container h1 {
+  font-size: medium;
+  margin: 0.25rem 0.5rem;
+}
+
+.show-container p {
+  --lh: 1rem; 
+  line-height: var(--lh);
+  height: calc(var(--lh) * 3);
+  font-size: x-small;
+  /* white-space: nowrap; */
+  margin: 0.25rem 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.show-preview-rating {
+  margin: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 6px;
+  background-color: goldenrod;
+  color: whitesmoke;
+}
+
+.material-icons {
+  font-size: small;
+}
+
+.popup {
+  z-index: 1;
+  position: fixed;
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 65%;
+  background-color: white;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  box-shadow: -3px -3px 4px rgba(0, 0, 0, 0.1);
+}
+
+.close-popup-button {
+  z-index: 3;
+  position: absolute;
+  top: 1rem; 
+  right: 1.5rem;
+  color: black;
+  font-weight: 700;
+  font-size: x-large;
+}
+
+/* .show-details-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+} */
+
+.popup-content-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.show-details-header {
+  width: 80%;
+  margin: 1rem 0 0.5rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-start;
+} 
+
+.show-details-header p {
+  font-size: small;
+}
+
+.show-details-header .episodes {
+  margin-left: 1rem; 
+}
+
+.details-body {
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+.details-body p {
+  font-size: small; 
+}
+
+.details-body h3 {
+  margin: 0.5rem 0;
+}
+
+.show-details-backdrop {
+  align-self: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.add-button {
+  font-size: small;
+  margin: 1rem;
+  color: whitesmoke;
+  font-weight: 700;
+  background-color: green;
+  padding: 0.15rem 0.2rem;
+  border-radius: 5px;
+}
+
+.add-button:hover {
+  cursor: pointer;
+}
+
+.watchlist {
+  margin: 0 auto; 
+  max-width: 1024px;
+}
+
+.watchlist h2 {
+  margin: 0.5rem;
+}
+
+.watchlist-shows-wrapper {
+  margin: 0.5rem; 
+  display: grid;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  grid-template-columns: auto auto;
+}
+
+.watchlist-show {
+  display: flex;
+  flex-direction: column;
+  /* height: 18rem; */
+  padding: 0.5rem 0; 
+  border-radius: 6px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.watchlist-show .poster-container {
+  text-align: center;
+  width: 100%; 
+}
+
+.watchlist-show .poster {
+  max-height: 14rem; 
+}
+
+.watchlist-show .body {
+  width: 90%;
+}
+
+.watchlist-show .progress-bar {
+  margin: 0.25rem 0;
+  background-color: lightgray;
+  height: 0.25rem; 
+  width: 100%; 
+  display: flex;
+  flex-direction: row;
+}
+
+.watchlist-show .progress-bar .progress {
+  background-color: green;
+  height: 0.25rem; 
+}
+
+.watchlist-show p {
+  font-size: small;
+}
