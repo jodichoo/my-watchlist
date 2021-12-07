@@ -1,12 +1,12 @@
-const API_KEY = require("./apikey"); 
 const express = require("express");
+const dotenv = require('dotenv');
 const app = express();
 const cors = require("cors"); 
 const pool = require("./db"); 
 const axios = require("axios"); 
 
-const BASE_URL = "https://api.themoviedb.org/3/"; 
-const url = BASE_URL + `discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_original_language=ko`;
+dotenv.config(); 
+const url = `${process.env.TMDB_URL}discover/tv?api_key=${process.env.API_KEY}&language=en-US&sort_by=popularity.desc&with_original_language=ko`;
 
 //middleware
 app.use(cors());
@@ -28,7 +28,7 @@ app.get("/shows/:page", async (req, res) => {
 // get information for a show 
 app.get("/show/:did", async (req, res) => {
     const { did } = req.params; 
-    const showDetailsUrl = `https://api.themoviedb.org/3/tv/${did}?api_key=${API_KEY}&language=en-US`
+    const showDetailsUrl = `https://api.themoviedb.org/3/tv/${did}?api_key=${process.env.API_KEY}&language=en-US`
     try {
         const details = await axios.get(showDetailsUrl); 
         res.json({
