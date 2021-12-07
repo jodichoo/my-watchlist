@@ -265,3 +265,33 @@
 .watchlist-show p {
   font-size: small;
 }
+
+.remove-button {
+  background-color: indianred;
+  font-weight: 700;
+  color: whitesmoke;
+  padding: 0.25rem;
+  border-radius: 5px;
+  margin: 0 0.25rem;
+}
+
+.remove-button:hover {
+  cursor: pointer;
+}
+
+.episode-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0.25rem 0;
+}
+
+.episode-list-item {
+  align-content: center;
+  padding: 0.75rem 0.5rem;
+  margin: 0.25rem 0;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.episode-list-item input {
+  margin: 0 1rem;
+}

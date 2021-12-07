@@ -6,6 +6,7 @@ function EpisodeList({ epArr, setEpArr, id }) {
     }
     return (
         <div className='episode-list'>
+            <h3>Episodes:</h3>
             {(epArr.map(renderEpisodes))}
         </div>
     )

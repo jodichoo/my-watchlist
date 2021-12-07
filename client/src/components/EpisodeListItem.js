@@ -1,5 +1,6 @@
 import { useState } from 'react'; 
 import { addEpisodeToList, removeEpisodeFromList } from '../services/QueryWatchlist'; 
+import EpisodeCheckbox from './EpisodeCheckbox';
 
 function EpisodeListItem({ epNum, watched, epArr, setEpArr, id }) {
     const [seen, setSeen] = useState(watched ? true : false); 
@@ -10,11 +11,11 @@ function EpisodeListItem({ epNum, watched, epArr, setEpArr, id }) {
 
         updateWatchedEpisodes(!seen); 
         setEpArr(newArr); 
-        setSeen(!seen);  
+        setSeen(seen => !seen);  
     }
 
-    async function updateWatchedEpisodes(bool) {
-        if (bool) {
+    async function updateWatchedEpisodes(isSeen) {
+        if (isSeen) {
             await addEpisodeToList(id, epNum); 
         } else {
             await removeEpisodeFromList(id, epNum); 
@@ -23,7 +24,7 @@ function EpisodeListItem({ epNum, watched, epArr, setEpArr, id }) {
     
     return (
         <div className='episode-list-item'>
-            <input type='checkbox' checked={seen} disabled={watched === null} onChange={toggleWatched}></input>
+            <EpisodeCheckbox checked={seen} disabled={watched == null} toggleWatched={toggleWatched} />
             Episode {epNum} {' '}
             {watched === null ? "(To be aired)" : null}
         </div>
