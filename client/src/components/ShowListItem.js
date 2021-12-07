@@ -11,7 +11,7 @@ function ShowListItem({ show, setIsOpen, setShowId }) {
     <div className='show-container' onClick={openShowDetails}>
       <div className='show-preview-left'>
         <div className='show-preview-poster-container'>
-          <img className='show-preview-poster' src={POSTER_BASE_URL + poster_path} alt='poster'></img>
+          <img className='show-preview-poster' src={poster_path ? POSTER_BASE_URL + poster_path : null} alt='poster'></img>
         </div>
         <div className='show-preview-text'>
           <h1>{name}</h1>

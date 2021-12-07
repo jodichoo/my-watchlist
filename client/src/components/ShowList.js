@@ -3,6 +3,7 @@ import ShowListItem from './ShowListItem';
 import { fetchShowList } from '../services/FetchShowList';  
 import Popup from './Popup'; 
 import ShowDetails from './ShowDetails'; 
+import LoadMoreButton from './LoadMoreButton';
 
 function ShowList() {
   const [pages, setPages] = useState(1); 
@@ -21,6 +22,12 @@ function ShowList() {
     setShows(list);
   }
 
+  async function loadMore() {
+    const moreShows = await fetchShowList(pages + 1); 
+    setShows(list => [...list, ...moreShows]); 
+    setPages(pages + 1);
+  }
+
   useEffect(() => {
     getShows(pages); 
   }, []); 
@@ -34,6 +41,7 @@ function ShowList() {
           <ShowDetails id={showId} />
         </Popup> 
         : null}
+      <LoadMoreButton loadMore={loadMore} />
     </div>
   );
 }

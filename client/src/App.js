@@ -11,8 +11,8 @@ function App() {
       <Navbar>
         <NavItem name='My List' />
       </Navbar>
-      {/* <Searchbar /> */}
-      <Watchlist /> 
+      <Searchbar />
+      {/* <Watchlist />  */}
       <ShowList /> 
     </div>
   );

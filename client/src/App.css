@@ -295,3 +295,19 @@
 .episode-list-item input {
   margin: 0 1rem;
 }
+
+.load-more-button {
+  font-weight: 700;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  border-radius: 5px;
+  height: 3rem;
+  margin: 0.25rem 0 2rem 0;
+}
+
+.load-more-button:hover {
+  cursor: pointer; 
+}
