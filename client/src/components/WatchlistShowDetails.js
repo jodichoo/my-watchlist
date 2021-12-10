@@ -72,11 +72,13 @@ function WatchlistShowDetails({
       </div>
       <br />
       <div className="details-body">
-        Status: {renderShowCompletion(details.next_episode_to_air)}
-        <br />
+        <h3>Status:</h3>
+        <p>{renderShowCompletion(details.next_episode_to_air)}</p>
+        <h3>Overview</h3>
+        <p>{details.overview}</p>
         {epsSeen.length === 0
-          ? "You have not started on this show"
-          : `You have seen ${epsSeen.length} episodes`}
+          ? <h3>You have not started on this show</h3>
+          : <h3>You have seen {epsSeen.length} episodes</h3>}
         <EpisodeList epArr={epArr} setEpArr={setEpArr} id={details.id} />
       </div>
     </div>

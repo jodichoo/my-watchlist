@@ -23,7 +23,7 @@ function EpisodeListItem({ epNum, watched, epArr, setEpArr, id }) {
     }
     
     return (
-        <div className='episode-list-item'>
+        <div key={id} className='episode-list-item'>
             <EpisodeCheckbox checked={seen} disabled={watched == null} toggleWatched={toggleWatched} />
             Episode {epNum} {' '}
             {watched === null ? "(To be aired)" : null}

@@ -311,3 +311,41 @@
 .load-more-button:hover {
   cursor: pointer; 
 }
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.search-bar button {
+  padding: 0.5rem 1rem; 
+  border-radius: 10px;
+  border: none;
+  color: white; 
+  font-weight: 700;
+  background-color: black;
+}
+
+.search-bar input {
+  flex: auto;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid lightgray
+}
+
+.show-list .back {
+  padding: 0.25rem 0; 
+  font-size: small;
+  font-weight: 700; 
+  color: grey;
+}
+
+.show-list .back:hover {
+  color: black; 
+  cursor: pointer; 
+  transform: translateY(-5px);
+}

@@ -10,4 +10,10 @@ function fetchShowDetail(id) {
     .then(data => data.details); 
 }
 
-export { fetchShowList, fetchShowDetail }; 
+function fetchSearchResults(query) {
+  return fetch(`http://localhost:5000/search/${query}`)
+    .then(res => res.json())
+    .then(data => data.results);
+}
+
+export { fetchShowList, fetchShowDetail, fetchSearchResults }; 
