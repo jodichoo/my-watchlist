@@ -39,13 +39,41 @@ app.get("/show/:did", async (req, res) => {
     }
 })
 
+// get search results 
+app.get("/search/:query", async (req, res) => {
+    const { query } = req.params; 
+    let page = 1; 
+
+    function searchUrl(p) {
+        return `https://api.themoviedb.org/3/search/tv?api_key=${process.env.API_KEY}&page=${p}&query=${query}&include_adult=false`
+    }
+
+    try {
+        let response = await axios.get(searchUrl(page)); 
+        const totalPages = response.data.total_pages; 
+        let results = response.data.results.filter(show => show.original_language === "ko"); 
+
+        while (page < totalPages) {
+            page++; 
+            response = await axios.get(searchUrl(page)); 
+            results = [...results, ...response.data.results.filter(show => show.original_language === "ko")]; 
+        }
+
+        res.json({
+            results
+        }); 
+    } catch (err) {
+        console.error(err); 
+    }
+})
+
 // get watchlist 
 app.get("/watchlist", async (req, res) => {
     try {
-        const watchlist = await pool.query("SELECT * FROM watchlist"); 
+        const watchlist = await pool.query("SELECT * FROM watchlist");
         res.json({
             watchlist: watchlist.rows
-        }); 
+        });
     } catch (err) {
         console.error(err);
     }
