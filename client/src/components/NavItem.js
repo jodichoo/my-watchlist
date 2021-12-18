@@ -1,7 +1,9 @@
-function NavItem({ name }) {
+import { Link } from "react-router-dom";
+
+function NavItem({ name, path }) {
   return (
     <div className='nav-item'>
-      {name}
+      <Link to={path}>{name}</Link>
     </div>
   )
 }

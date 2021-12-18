@@ -7,10 +7,7 @@ import Watchlist from './components/Watchlist';
 function App() {
   return (
     <div className="App">
-      <Navbar>
-        <NavItem name='My List' />
-      </Navbar>
-      <Watchlist /> 
+      <Navbar />
       <ShowList /> 
     </div>
   );
