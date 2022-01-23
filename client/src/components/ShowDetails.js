@@ -5,7 +5,7 @@ import AddShowButton from './AddShowButton';
 function ShowDetails({ id }) {
   const POSTER_BASE_URL = "https://image.tmdb.org/t/p/original/";
   const [loading, setLoading] = useState(true); 
-  const [details, setDetails] = useState({}); 
+  const [details, setDetails] = useState(undefined); 
 
   async function getShowDetails(id) {
     setLoading(true);
@@ -15,8 +15,13 @@ function ShowDetails({ id }) {
 
   useEffect(() => {
     getShowDetails(id); 
-    setLoading(false); 
   }, [id]); 
+
+  useEffect(() => {
+    if (details != undefined) {
+      setLoading(false);
+    }
+  }, [details])
 
   function renderShowCompletion(nextEp) {
     if (nextEp === null) {
