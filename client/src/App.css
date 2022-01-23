@@ -22,6 +22,11 @@
   margin: 0 0.8rem;
 }
 
+.nav-item:hover {
+  border-bottom: 4px solid goldenrod;
+  cursor: pointer; 
+}
+
 .show-list {
   max-width: 1024px;
   margin: 0 auto;
@@ -348,4 +353,10 @@
   color: black; 
   cursor: pointer; 
   transform: translateY(-5px);
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
 }
