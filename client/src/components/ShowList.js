@@ -11,6 +11,7 @@ function ShowList() {
   const [loading, setLoading] = useState(true);
   const [pages, setPages] = useState(1);
   const [shows, setShows] = useState([]);
+  const [results, setResults] = useState([]); 
   const [showId, setShowId] = useState(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
@@ -20,7 +21,7 @@ function ShowList() {
     setIsSearch(true);
     const searchResults = await fetchSearchResults(query);
     setLoading(false);
-    setShows(searchResults);
+    setResults(searchResults);
   }
 
   function renderShow(show) {
@@ -32,6 +33,14 @@ function ShowList() {
         setShowId={setShowId}
       />
     );
+  }
+
+  function displayList() {
+    if (isSearch) {
+      return results.map(renderShow)
+    } else {
+      return shows.map(renderShow); 
+    }
   }
 
   async function getShows(page) {
@@ -57,18 +66,22 @@ function ShowList() {
       ) : (
         <div className="show-list">
           {isSearch && (
-            <div className="back" onClick={() => console.log("back")}>
+            <div className="back" onClick={() => setIsSearch(false)}>
               <i className="material-icons">arrow_back</i>Back to popular
             </div>
           )}
+          
           <Searchbar searchShows={searchShows} />
           <h2>{isSearch ? "Search Results:" : "Popular:"}</h2>
-          {shows.map((show) => renderShow(show))}
+
+          {displayList()}
+
           {detailsOpen ? (
             <Popup setIsOpen={setDetailsOpen}>
               <ShowDetails id={showId} />
             </Popup>
           ) : null}
+
           {isSearch || <LoadMoreButton loadMore={loadMore} />}
         </div>
       )}
