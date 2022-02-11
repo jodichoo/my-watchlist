@@ -49,6 +49,7 @@ function Watchlist() {
               setEpsSeen={setOpenEpsSeen}
               watchlist={watchlist}
               setWatchlist={setWatchlist}
+              setDetailsOpen={setDetailsOpen}
             />
           </Popup>
         ) : null}

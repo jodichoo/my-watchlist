@@ -9,6 +9,7 @@ function WatchlistShowDetails({
   setEpsSeen,
   watchlist,
   setWatchlist,
+  setDetailsOpen
 }) {
   const [epArr, setEpArr] = useState(createEpisodesArr());
 
@@ -35,6 +36,7 @@ function WatchlistShowDetails({
     const newWatchlist = watchlist.filter((show) => show.did !== details.id);
     setWatchlist(newWatchlist);
     await removeShowFromList(details.id);
+    setDetailsOpen(false); 
   }
 
   // updates the list of episodes seen when the watch status of an episode for the show changes

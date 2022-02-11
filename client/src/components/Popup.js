@@ -1,4 +1,4 @@
-function Modal({ children, setIsOpen }) {
+function Popup({ children, setIsOpen }) {
 
   function closePopup() {
     setIsOpen(false);
@@ -12,4 +12,4 @@ function Modal({ children, setIsOpen }) {
     )
 }
 
-export default Modal; 
+export default Popup; 
