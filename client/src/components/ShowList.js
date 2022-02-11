@@ -5,7 +5,6 @@ import Popup from "./Popup";
 import ShowDetails from "./ShowDetails";
 import LoadMoreButton from "./LoadMoreButton";
 import Searchbar from "./Searchbar";
-import Navbar from "./Navbar";
 
 function ShowList() {
   const [loading, setLoading] = useState(true);
@@ -43,20 +42,20 @@ function ShowList() {
     }
   }
 
-  async function getShows(page) {
-    const list = await fetchShowList(page);
-    setLoading(false);
-    setShows(list);
-  }
-
   async function loadMore() {
     const moreShows = await fetchShowList(pages + 1);
     setShows((list) => [...list, ...moreShows]);
     setPages(pages + 1);
   }
 
+  // only run at the start to generate inital list of shows
   useEffect(() => {
-    getShows(pages);
+    async function getShows(page) {
+      const list = await fetchShowList(page);
+      setLoading(false);
+      setShows(list);
+    }
+    getShows(1);
   }, []);
 
   return (

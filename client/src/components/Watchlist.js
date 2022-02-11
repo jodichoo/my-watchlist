@@ -39,6 +39,7 @@ function Watchlist() {
       <div className="watchlist">
         <h2>My List:</h2>
         <div className="watchlist-shows-wrapper">
+          {watchlist.length === 0 && "There are no shows in the list :("}
           {watchlist.map((show) => renderWatchlistShow(show.did))}
         </div>
         {detailsOpen && openShowDetails ? (

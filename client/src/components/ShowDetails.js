@@ -25,7 +25,7 @@ function ShowDetails({ id }) {
   }, [id]); 
 
   useEffect(() => {
-    if (details != undefined) {
+    if (details !== undefined) {
       setLoading(false);
     }
   }, [details])
@@ -48,7 +48,8 @@ function ShowDetails({ id }) {
 
   function addShow() {
     addToWatchlist(id, details.number_of_episodes); 
-    console.log('add ' + id + ' to the watchlist'); 
+    console.log('add ' + id + ' to the watchlist');
+    setInWatchlist(true);  
   }
 
   return (
