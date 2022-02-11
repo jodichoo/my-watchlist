@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import RemoveShowButton from "./RemoveShowButton";
 import EpisodeList from "./EpisodeList";
 import { removeShowFromList } from "../services/QueryWatchlist";
+import AddRemoveButton from "./AddRemoveButton";
 
 function WatchlistShowDetails({
   details,
@@ -70,7 +70,7 @@ function WatchlistShowDetails({
     <div className="popup-content-container">
       <div className="show-details-header">
         <h2 className="title">{details.name}</h2>
-        <RemoveShowButton id={details.id} removeShow={removeShow} />
+        <AddRemoveButton onClick={removeShow} type={"remove"} /> 
       </div>
       <br />
       <div className="details-body">

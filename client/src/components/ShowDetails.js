@@ -1,16 +1,23 @@
 import { fetchShowDetail } from '../services/FetchShowList'; 
 import { useEffect, useState } from 'react'; 
-import AddShowButton from './AddShowButton';
+import AddRemoveButton from './AddRemoveButton'; 
+import { addToWatchlist } from '../services/QueryWatchlist';
+import { getWatchlist } from '../services/QueryWatchlist';
 
 function ShowDetails({ id }) {
   const POSTER_BASE_URL = "https://image.tmdb.org/t/p/original/";
   const [loading, setLoading] = useState(true); 
-  const [details, setDetails] = useState(undefined); 
+  const [details, setDetails] = useState(undefined);
+  const [inWatchlist, setInWatchlist] = useState(false); 
 
   async function getShowDetails(id) {
     setLoading(true);
     const details = await fetchShowDetail(id); 
-    setDetails(details); 
+    setDetails(details);
+
+    const watchlistData = await getWatchlist(); 
+    const watchlistDids = watchlistData.map(show => show.did); 
+    setInWatchlist(watchlistDids.includes(id)); 
   }
 
   useEffect(() => {
@@ -39,13 +46,18 @@ function ShowDetails({ id }) {
     }
   }
 
+  function addShow() {
+    addToWatchlist(id, details.number_of_episodes); 
+    console.log('add ' + id + ' to the watchlist'); 
+  }
+
   return (
     <div className='popup-content-container'>
       {loading ? <div>Loading</div> 
       : <>
         <div className='show-details-header'>
           <h2 className='title'>{details.name}</h2>
-          <AddShowButton id={id} totalEps={details.number_of_episodes} />
+          {inWatchlist ? "Added" : <AddRemoveButton onClick={addShow} type={"add"} />}
         </div>
         <div className='details-body'>
           <img className='show-details-backdrop' src={POSTER_BASE_URL + details.backdrop_path} alt='backdrop'></img>
